@@ -4,6 +4,6 @@ public enum ChatRoomType {
 
     PUBLIC,
     PRIVATE,
-    GROUP,
+    DIRECT_MESSAGE,
 
 }
