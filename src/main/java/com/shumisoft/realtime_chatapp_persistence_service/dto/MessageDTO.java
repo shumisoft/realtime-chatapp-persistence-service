@@ -1,6 +1,7 @@
 package com.shumisoft.realtime_chatapp_persistence_service.dto;
 
 import java.sql.Timestamp;
+import java.util.UUID;
 
 import com.shumisoft.realtime_chatapp_persistence_service.entity.Message;
 import com.shumisoft.realtime_chatapp_persistence_service.model.MessageStatus;
@@ -21,7 +22,7 @@ public class MessageDTO {
     @NotNull
     private Long chatRoomId;
     @NotNull
-    private Long userId;
+    private UUID userId;
     @NotEmpty
     private String content;
     private Timestamp timestamp;
