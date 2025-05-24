@@ -8,36 +8,59 @@ import com.shumisoft.realtime_chatapp_persistence_service.model.MessageStatus;
 import com.shumisoft.realtime_chatapp_persistence_service.model.MessageType;
 
 import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class MessageDTO {
 
-    private Long messageId;
-    @NotNull
+    private String messageId;
+
     private Long chatRoomId;
-    @NotNull
+
     private UUID userId;
+
     @NotEmpty
     private String content;
+
     private Timestamp timestamp;
+
+    @Builder.Default
     private MessageStatus status = MessageStatus.UNREAD;
+
+    @Builder.Default
     private MessageType type = MessageType.TEXT;
 
-    // Static method to convert entity to DTO
+    @Builder.Default
+    private boolean edited = false;
+
     public static MessageDTO fromEntity(Message entity) {
-        return new MessageDTO(entity.getMessageId(), entity.getChatRoom().getChatId(), entity.getUser().getUserId(),
-                entity.getContent(), entity.getTimestamp(), entity.getStatus(), entity.getType());
+        return MessageDTO.builder()
+                .messageId(entity.getMessageId())
+                .chatRoomId(entity.getChatRoom().getChatId())
+                .userId(entity.getUser().getUserId())
+                .content(entity.getContent())
+                .timestamp(entity.getTimestamp())
+                .status(entity.getStatus())
+                .type(entity.getType())
+                .edited(entity.isEdited())
+                .build();
     }
 
-    // Method to convert DTO to entity
     public Message toEntity() {
-        return new Message(this.messageId, null, null, this.content, this.timestamp, this.status, this.type);
+        return Message.builder()
+                .messageId(this.messageId)
+                .content(this.content)
+                .timestamp(this.timestamp)
+                .status(this.status)
+                .type(this.type)
+                .edited(edited)
+                .build();
     }
 
 }

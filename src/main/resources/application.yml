@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: realtime-chatapp-persistence-service
+  datasource:
+    url: jdbc:mysql://192.168.1.77:3306/realtime_chat_app
+  config:
+    import: "configserver:"
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: realtime-chatapp-config-service
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
