@@ -57,9 +57,9 @@ public class MessageDTO {
                 .messageId(this.messageId)
                 .content(this.content)
                 .timestamp(this.timestamp)
-                .status(this.status)
-                .type(this.type)
-                .edited(edited)
+                .status(this.status != null ? this.status : MessageStatus.SENT)
+                .type(this.type != null ? this.type : MessageType.TEXT)
+                .edited(this.edited)
                 .build();
     }
 
