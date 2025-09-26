@@ -1,0 +1,34 @@
+package com.shumisoft.realtime_chatapp_persistence_service.service.Impl;
+
+import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.stereotype.Service;
+
+import com.shumisoft.realtime_chatapp_persistence_service.dto.MessageDTO;
+import com.shumisoft.realtime_chatapp_persistence_service.service.KafkaConsumerService;
+import com.shumisoft.realtime_chatapp_persistence_service.service.MessageService;
+
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+
+@Service
+@RequiredArgsConstructor
+@Slf4j
+public class KafkaConsumerServiceImpl implements KafkaConsumerService {
+
+    private final MessageService messageService;
+
+    @Override
+    @KafkaListener(topics = "chat-messages", groupId = "persistence-group")
+    public void consume(MessageDTO dto) {
+        log.info("Processing message from Kafka: {}", dto.getMessageId());
+        try {
+            log.info(dto.toString());
+            messageService.createMessage(dto, dto.getUserId());
+
+            log.info("Message persisted: " + dto.getMessageId());
+        } catch (Exception e) {
+            // Handle DB errors (log or send to a Dead Letter Queue)
+            log.error("Failed to persist message: " + e.getMessage());
+        }
+    }
+}
