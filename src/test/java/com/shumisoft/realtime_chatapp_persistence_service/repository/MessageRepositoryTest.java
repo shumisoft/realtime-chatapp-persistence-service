@@ -20,7 +20,7 @@ import com.shumisoft.realtime_chatapp_persistence_service.model.MessageStatus;
 import com.shumisoft.realtime_chatapp_persistence_service.model.MessageType;
 
 @DataJpaTest
-public class MessageRepositoryTest {
+class MessageRepositoryTest {
 
     @Autowired
     private MessageRepository messageRepository;

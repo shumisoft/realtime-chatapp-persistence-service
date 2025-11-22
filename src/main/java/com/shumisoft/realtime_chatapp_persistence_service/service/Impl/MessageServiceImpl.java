@@ -54,7 +54,7 @@ public class MessageServiceImpl implements MessageService {
                 message.setChatRoom(room);
                 message.setUser(user);
 
-                message = messageRepository.save(message);
+                messageRepository.save(message);
         }
 
 }

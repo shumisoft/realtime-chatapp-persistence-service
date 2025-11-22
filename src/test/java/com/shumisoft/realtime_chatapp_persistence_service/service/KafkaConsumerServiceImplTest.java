@@ -18,7 +18,7 @@ import com.shumisoft.realtime_chatapp_persistence_service.factory.PersistenceDat
 import com.shumisoft.realtime_chatapp_persistence_service.service.Impl.KafkaConsumerServiceImpl;
 
 @ExtendWith(MockitoExtension.class)
-public class KafkaConsumerServiceImplTest {
+class KafkaConsumerServiceImplTest {
     @Mock
     private MessageService messageService;
 

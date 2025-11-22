@@ -31,7 +31,7 @@ import com.shumisoft.realtime_chatapp_persistence_service.repository.UserReposit
 import com.shumisoft.realtime_chatapp_persistence_service.service.Impl.MessageServiceImpl;
 
 @ExtendWith(MockitoExtension.class)
-public class MessageServiceImplTest {
+class MessageServiceImplTest {
     @Mock
     private UserRepository userRepository;
     @Mock
