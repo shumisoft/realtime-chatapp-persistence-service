@@ -2,7 +2,6 @@ package com.shumisoft.realtime_chatapp_persistence_service.entity;
 
 import java.sql.Timestamp;
 
-import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -29,6 +28,7 @@ import lombok.NoArgsConstructor;
 public class Message {
 
     @Id
+    @Column(name = "message_id")
     private String messageId;
 
     @ManyToOne
@@ -44,7 +44,7 @@ public class Message {
     private String content;
 
     @Column(nullable = false, updatable = false)
-    @CreationTimestamp
+
     private Timestamp timestamp;
 
     @Builder.Default
@@ -58,4 +58,5 @@ public class Message {
     @Builder.Default
     @Column(nullable = false)
     private boolean edited = false;
+
 }

@@ -7,18 +7,18 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.shumisoft.realtime_chatapp_persistence_service.entity.ChatRoom;
-import com.shumisoft.realtime_chatapp_persistence_service.entity.ChatRoomMembers;
+import com.shumisoft.realtime_chatapp_persistence_service.entity.ChatRoomMember;
 import com.shumisoft.realtime_chatapp_persistence_service.entity.User;
 import com.shumisoft.realtime_chatapp_persistence_service.model.ChatRoomMembersId;
 
-public interface ChatRoomMembersRepository extends JpaRepository<ChatRoomMembers, ChatRoomMembersId> {
+public interface ChatRoomMemberRepository extends JpaRepository<ChatRoomMember, ChatRoomMembersId> {
 
   boolean existsByChatRoomAndUser(ChatRoom chatRoom, User user);
 
-  List<ChatRoomMembers> findByChatRoom(ChatRoom chatRoom);
+  List<ChatRoomMember> findByChatRoom(ChatRoom chatRoom);
 
-  ChatRoomMembers findByChatRoomAndUser(ChatRoom chatRoom, User user);
+  ChatRoomMember findByChatRoomAndUser(ChatRoom chatRoom, User user);
 
-  Page<ChatRoomMembers> findByUser(User user, Pageable pageable);
+  Page<ChatRoomMember> findByUser(User user, Pageable pageable);
 
 }

@@ -20,7 +20,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class ChatRoomMembers {
+public class ChatRoomMember {
 
   @EmbeddedId
   private ChatRoomMembersId chatRoomMembersId;
