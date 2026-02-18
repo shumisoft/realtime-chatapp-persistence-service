@@ -17,6 +17,7 @@ public class KafkaConsumerService {
 
     @KafkaListener(topics = "chat-messages", groupId = "persistence-group")
     public void consume(MessageDTO dto) {
+        log.info("Processing message from Kafka: {}", dto.getMessageId());
         try {
             log.info(dto.toString());
             messageService.createMessage(dto, dto.getUserId());

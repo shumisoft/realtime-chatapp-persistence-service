@@ -16,7 +16,6 @@ import com.shumisoft.realtime_chatapp_persistence_service.repository.MessageRepo
 import com.shumisoft.realtime_chatapp_persistence_service.repository.UserRepository;
 import com.shumisoft.realtime_chatapp_persistence_service.service.MessageService;
 
-import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
 
 @Service
